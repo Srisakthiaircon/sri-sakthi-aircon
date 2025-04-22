@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sri Sakthi Aircon</title>
+  
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="icon" type="image/png" href="logoo.png" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('back.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+    }
+
+    .main-container {
+      width: 100%;
+      max-width: 430px;
+      background-color: transparent;
+      position: relative;
+    }
+
+    .section {
+      padding: 6px 5px;
+      position: relative;
+    }
+
+    .section-content {
+      text-align: center;
+      max-width: 100%;
+      position: relative;
+    }
+
+    .section-content img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 430px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.75);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    .bottom-nav a {
+      flex: 1;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .bottom-nav a .material-icons {
+      font-size: 22px;
+      margin-bottom: 3px;
+    }
+
+    .bottom-nav a.active {
+      background-color: orange;
+      color: black;
+      border-radius: 5px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      color: white;
+      margin-bottom: 110px;
+      margin-top: -60px;
+      font-weight: 500;
+    }
+
+    .button-container {
+      position: absolute;
+      top: 23%;
+      left: 10%;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .custom-button {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #66b3ff;
+      color: white;
+      border: none;
+      padding: 4px 5px;
+      font-size: 11px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      height: 34px;
+      gap: 4px;
+    }
+
+    .custom-button .material-icons {
+      font-size: 16px;
+    }
+  .info-block {
+      position: absolute;
+      top: 45%;
+      bottom: 90%;
+      left: 9%;
+      right: 9%;
+      transform: translateY(-50%);
+      z-index: 10;
+      text-align: left;
+      color: black;
+      font-size: 17px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow: visible;
+    }
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-icon {
+      background-color: #007bff;
+      color: white;
+      border-radius: 50%;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .phonebook-button {
+      margin-top: 15px;
+      background-color: #ffa500;
+      color: black;
+      text-align: center;
+      padding: 8px 12px;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+     /* Our Works Section Styles */
+    .works-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .gallery-section {
+      position: absolute;
+      top: 12%;
+      left: 5%;
+      right: 5%;
+      height: 38%;
+      background-color: rgba(255,255,255,0.8);
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    .video-section {
+      position: absolute;
+      top: 54%;
+      left: 5%;
+      right: 5%;
+      height: 36%;
+      background-color: rgba(255,255,255,0.8);
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    .gallery-title, .video-title {
+      text-align: center;
+      margin-bottom: 10px;
+      color: black;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .image-slider, .video-slider {
+      position: relative;
+      height: calc(100% - 30px);
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .image-track, .video-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .image-track img, .video-track video {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+
+    .img-prev, .img-next, .vid-prev, .vid-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .img-prev, .vid-prev {
+      left: 5px;
+    }
+
+    .img-next, .vid-next {
+      right: 5px;
+    }
+
+    /* Modal Styles */
+    #mediaModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    #modalContent {
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      position: relative;
+    }
+
+    .modal-media-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-media {
+      width: 100%;
+      height: calc(100% - 50px);
+      object-fit: contain;
+    }
+
+    .modal-nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+
+    .modal-nav-btn {
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    #closeModal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2001;
+    }
+    
+    /* Feedback Form Styles */
+    .feedback-form {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 15px;
+      border-radius: 8px;
+      width: 90%;
+      z-index: 10;
+    }
+
+    .stars {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .stars span {
+      font-size: 24px;
+      cursor: pointer;
+      color: gray;
+    }
+
+    .stars .selected {
+      color: gold;
+    }
+
+    .feedback-form input,
+    .feedback-form textarea {
+      width: 100%;
+      padding: 6px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .feedback-form button {
+      width: 100%;
+      padding: 8px;
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Enquiry Form */
+    .enquiry-form {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 15px;
+      border-radius: 8px;
+      width: 90%;
+      z-index: 10;
+    }
+
+    .enquiry-form input,
+    .enquiry-form textarea {
+      width: 100%;
+      padding: 6px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .enquiry-form button {
+      width: 100%;
+      padding: 8px;
+      background-color: #28a745;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+ /* Share Section Styles */
+  .share-content-overlay {
+  position: absolute;
+  top: 15%; /* Start from 15% from the top */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 75%; /* 85% - 15% = 70% height */
+  z-index: 10;
+  text-align: center;
+  overflow-y: auto; /* Add scrolling if content exceeds height */
+}
+
+    .website-link-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+      background-color: white;
+      border-radius: 5px;
+      padding: 5px;
+    }
+
+    .website-link {
+      flex-grow: 1;
+      text-align: center;
+      font-size: 14px;
+      color: #333;
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .copy-button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 5px;
+    }
+
+    .copy-button .material-icons {
+      font-size: 16px;
+    }
+
+    .qr-instruction {
+      color: #333;
+      font-weight: 500;
+      margin: 10px 0;
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .qr-container {
+      width: 150px;
+      height: 150px;
+      background-color: white;
+      border: 1px solid #ccc;
+      margin: 0 auto 15px;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-container img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .action-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+      gap: 5px;
+      font-size: 14px;
+    }
+
+    .share-button {
+      background-color: #4CAF50;
+    }
+
+    .save-button {
+      background-color: #FFC107;
+    }
+
+    .whatsapp-instruction {
+      color: #333;
+      font-weight: 500;
+      margin: 10px 0;
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .whatsapp-share-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .whatsapp-input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      flex-grow: 1;
+      max-width: 180px;
+    }
+
+    .whatsapp-button {
+      background-color: #25D366;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-size: 14px;
+      height: 36px;
+    }
+
+    .whatsapp-button .material-icons {
+      font-size: 18px;
+    }
+
+
+     @media (max-width: 768px) {
+    .info-block {
+      top: 50%;
+      width: 90%;
+      font-size: 15px;
+      padding: 10px;
+    }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <!-- Home Section -->
+    <div id="home" class="section">
+  <div class="section-content">
+    <img src="Home.png" alt="Home Page Image">
+    <div class="button-container">
+      <div class="button-row">
+        <a href="tel:+919597484355" class="custom-button">
+          <i class="material-icons">call</i>Call
+        </a>
+        <a href="https://wa.me/919597484355" class="custom-button">
+          <i class="material-icons">chat</i>WhatsApp
+        </a>
+      </div>
+      <div class="button-row">
+        <a href="mailto:srisakthiaircons@gmail.com" class="custom-button">
+          <i class="material-icons">email</i>Email
+        </a>
+        <a href="https://maps.app.goo.gl/zHcNSnFqi2szG7gW6" class="custom-button" target="_blank">
+          <i class="material-icons">location_on</i>Direction
+        </a>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-row">
+        <a href="https://maps.app.goo.gl/zHcNSnFqi2szG7gW6" target="_blank" style="color: inherit; text-decoration: none;">
+          <span class="material-icons info-icon">location_on</span>
+        </a>
+        <a href="https://maps.app.goo.gl/zHcNSnFqi2szG7gW6" style="color: black; text-decoration: none;" target="_blank">
+          #114, Annai Indira Salai, Pugalur Road, Karur - 639 001
+        </a>
+      </div> 
+      <div class="info-row">
+        <a href="https://maps.app.goo.gl/rtfpAantYgncLSgb6?g_st=aw" target="_blank" style="color: inherit; text-decoration: none;">
+          <span class="material-icons info-icon">location_on</span>
+        </a>
+        <a href="https://maps.app.goo.gl/rtfpAantYgncLSgb6?g_st=aw" style="color: black; text-decoration: none;" target="_blank">
+          RAVI A/C ELECTRONICS 1/248,Thiruvalluvar street, Sembanarkoil,Mailaduthurai-609309
+        </a>
+      </div> 
+      <div class="info-row">
+        <a href="mailto:srisakthiaircons@gmail.com" style="color: inherit; text-decoration: none;">
+          <span class="material-icons info-icon">email</span>
+        </a>
+        <a href="mailto:srisakthiaircon@gmail.com" style="color: black; text-decoration: none;">
+          srisakthiaircons@gmail.com
+        </a>
+      </div>
+      <div class="info-row">
+        <a href="tel:+919597484355" style="color: inherit; text-decoration: none;">
+          <span class="material-icons info-icon">call</span>
+        </a>
+        <a href="tel:+919597484355" style="color: black; text-decoration: none;">
+          +91 95974 84355
+        </a>
+      </div>
+      <a href="srisakthiaircon.vcf" download class="phonebook-button">Add to Phonebook</a>
+    </div>
+  </div>
+</div>
+
+    <!-- About Section -->
+    <div id="about" class="section">
+      <div class="section-content">
+        <img src="About.png" alt="About">
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <div id="services" class="section">
+      <div class="section-content">
+        <img src="Services.png" alt="Services">
+      </div>
+    </div>
+
+    <!-- Our Works Section -->
+<div id="Works" class="section">
+  <div class="section-content">
+    <img src="Work.png" alt="Our Works" style="width: 100%; height: auto; object-fit: contain;">
+    
+    <!-- Image Gallery Section -->
+    <div class="gallery-section">
+      <div class="gallery-title">Images from our recent services</div>
+      <div class="image-slider">
+        <div class="image-track">
+          <img src="a.png" alt="Service Image 1">
+          <img src="b.png" alt="Service Image 2">
+          <img src="c.png" alt="Service Image 3">
+          <img src="d.png" alt="Service Image 4">
+          <img src="e.png" alt="Service Image 5">
+        </div>
+        <button class="img-prev"><span class="material-icons">chevron_left</span></button>
+        <button class="img-next"><span class="material-icons">chevron_right</span></button>
+      </div>
+    </div>
+    
+    <!-- Video Gallery Section -->
+    <div class="video-section">
+      <div class="video-title">Live clips of our work process</div>
+      <div class="video-slider">
+        <div class="video-track">
+          <video controls>
+            <source src="1.mp4" type="video/mp4">
+          </video>
+          <video controls>
+            <source src="2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <button class="vid-prev"><span class="material-icons">chevron_left</span></button>
+        <button class="vid-next"><span class="material-icons">chevron_right</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for enlarged view -->
+<div id="mediaModal">
+  <div id="modalContent"></div>
+  <button id="closeModal"><span class="material-icons">close</span></button>
+</div>
+
+   
+
+    <!-- Feedback Section -->
+    <div id="feedback" class="section">
+      <div class="section-content">
+        <img src="Feedback.png" alt="Feedback">
+        <form class="feedback-form" action="https://formsubmit.co/srisakthiaircons@gmail.com" method="POST" onsubmit="feedbackAlert(event)">
+          <div class="stars" id="stars">
+            <span data-star="1">&#9733;</span>
+            <span data-star="2">&#9733;</span>
+            <span data-star="3">&#9733;</span>
+            <span data-star="4">&#9733;</span>
+            <span data-star="5">&#9733;</span>
+          </div>
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" rows="3" placeholder="Your Message" required></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Enquiry Section -->
+    <div id="enquiry" class="section">
+      <div class="section-content">
+        <img src="Enquiry.png" alt="Enquiry">
+        <form class="enquiry-form" action="https://formsubmit.co/srisakthiaircons@gmail.com" method="POST" onsubmit="enquiryAlert(event)">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <textarea name="message" rows="3" placeholder="Your Message" required></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+  <!-- Share Section -->
+    <div id="share" class="section">
+      <div class="section-content">
+        <img src="Share.png" alt="Share">
+        <div class="share-content-overlay">
+          <div class="website-link-container">
+            <p class="website-link">https://srisakthiaircon.vercel.app</p>
+            <button class="copy-button" onclick="copyLink()">
+              <span class="material-icons">content_copy</span>
+            </button>
+          </div>
+          
+          <p class="qr-instruction">Scan below QR to open profile</p>
+          
+          <div class="qr-container">
+            <img src="QR.png" alt="QR Code">
+          </div>
+          
+          <div class="action-buttons">
+            <button class="action-button share-button" onclick="shareProfile()">
+              <span class="material-icons">share</span> Share
+            </button>
+            <button class="action-button save-button" onclick="saveQRCode()">
+              <span class="material-icons">download</span> Save QR
+            </button>
+          </div>
+          
+          <p class="whatsapp-instruction">Share profile to any whatsapp number</p>
+          
+          <div class="whatsapp-share-container">
+            <input type="tel" id="whatsappNumber" class="whatsapp-input" placeholder="Enter WhatsApp Number">
+            <button class="whatsapp-button" onclick="shareOnWhatsApp()">
+              <span class="material-icons">chat</span> Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="footer">© 2025 Sri Sakthi Airconditioner</div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav" id="navbar">
+      <a href="#home" data-target="home"><span class="material-icons">home</span>Home</a>
+      <a href="#about" data-target="about"><span class="material-icons">info</span>About</a>
+      <a href="#services" data-target="services"><span class="material-icons">build</span>Services</a>
+      <a href="#Works" data-target="Works"><span class="material-icons">photo_camera</span>Works</a>
+      <a href="#feedback" data-target="feedback"><span class="material-icons">rate_review</span>Feedback</a>
+      <a href="#enquiry" data-target="enquiry"><span class="material-icons">help_outline</span>Enquiry</a>
+      <a href="#share" data-target="share"><span class="material-icons">share</span>Share</a>
+    </div>
+  </div>
+
+  <script>
+      window.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".section");
+    const navLinks = document.querySelectorAll(".bottom-nav a");
+
+    function removeActiveClasses() {
+      navLinks.forEach(link => link.classList.remove("active"));
+    }
+
+    function addActiveLink(id) {
+      removeActiveClasses();
+      const activeLink = document.querySelector(`.bottom-nav a[data-target="${id}"]`);
+      if (activeLink) activeLink.classList.add("active");
+    }
+
+    window.addEventListener("scroll", () => {
+      let currentId = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          currentId = section.getAttribute("id");
+        }
+      });
+      if (currentId) {
+        addActiveLink(currentId);
+      }
+      
+      // Special handling for the Share section on mobile
+      const windowHeight = window.innerHeight;
+      const docHeight = document.body.scrollHeight;
+      
+      // If we're near the bottom of the page, set Share as active
+      if (window.pageYOffset + windowHeight >= docHeight - 150) {
+        addActiveLink("share");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        const targetId = link.getAttribute("data-target");
+        addActiveLink(targetId);
+      });
+    });
+
+    // Set active nav link on page load
+    const hash = window.location.hash.replace("#", "") || "home";
+    addActiveLink(hash);
+
+    // Feedback form submit
+    const feedbackForm = document.querySelector("#feedbackForm");
+    if (feedbackForm) {
+      feedbackForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        alert("Feedback submitted successfully!");
+        this.submit();
+      });
+    }
+
+    // Enquiry form submit
+    const enquiryForm = document.querySelector("#enquiryForm");
+    if (enquiryForm) {
+      enquiryForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        alert("Enquiry submitted successfully!");
+        this.submit();
+      });
+    }
+
+    // Star rating system
+    const stars = document.querySelectorAll("#stars span");
+    if (stars.length > 0) {
+      stars.forEach(star => {
+        star.addEventListener("click", function () {
+          const value = parseInt(this.dataset.star);
+          stars.forEach(s => {
+            s.classList.toggle("selected", parseInt(s.dataset.star) <= value);
+          });
+        });
+      });
+    }
+
+    // Copy link to clipboard
+    window.copyLink = function () {
+      navigator.clipboard.writeText("https://srisakthiaircon.vercel.app")
+        .then(() => {
+          alert("Link copied to clipboard!");
+        })
+        .catch(err => {
+          console.error('Failed to copy: ', err);
+          alert("Failed to copy link. Please try again.");
+        });
+    };
+
+    // Share using Web Share API
+    window.shareProfile = function () {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Sri Sakthi Aircon',
+          text: 'Check out Sri Sakthi Aircon!',
+          url: 'https://srisakthiaircon.vercel.app',
+        })
+          .then(() => console.log('Successfully shared'))
+          .catch((error) => console.log('Error sharing', error));
+      } else {
+        alert("Web Share API not supported. Please copy the link manually.");
+      }
+    };
+
+    // Download QR Code
+    window.saveQRCode = function () {
+      const link = document.createElement('a');
+      link.href = 'QR.png'; // Make sure this file exists
+      link.download = 'SriSakthiAircon-QR.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      alert("QR code download started.");
+    };
+
+    // WhatsApp share
+    window.shareOnWhatsApp = function () {
+      const input = document.getElementById('whatsappNumber');
+      if (!input) {
+        alert("WhatsApp number input field not found.");
+        return;
+      }
+
+      const whatsappNumber = input.value;
+      if (!whatsappNumber) {
+        alert("Please enter a WhatsApp number.");
+        return;
+      }
+
+      const formattedNumber = whatsappNumber.replace(/\D/g, '');
+      const url = `https://wa.me/${formattedNumber}?text=Check out Sri Sakthi Aircon! https://srisakthiaircon.vercel.app`;
+      window.open(url, '_blank');
+    };
+  });
+function addToPhonebook() {
+      const vCardData = `
+BEGIN:VCARD
+VERSION:3.0
+FN:Mahesh R
+ORG:SRI SAKTHI AIRCON
+TEL:+91 95974 84355
+EMAIL:srisakthiaircon@gmail.com
+ADR;TYPE=work:#114, Annai Indira Salai, Pugalur Road, Karur - 639 001
+END:VCARD
+      `;
+      const blob = new Blob([vCardData], { type: 'text/vcard' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Mahesh_R.vcf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+   // Carousel Variables
+let imgIndex = 0;
+let vidIndex = 0;
+let imageInterval;
+let videoInterval;
+let touchStartX = 0;
+let isDragging = false;
+let lastTap = 0;
+let tapTimeout;
+
+// Initialize all carousels
+function initCarousels() {
+    initImageCarousel();
+    initVideoCarousel();
+}
+
+// IMAGE CAROUSEL
+function initImageCarousel() {
+    const imageTrack = document.querySelector('.image-track');
+    const images = document.querySelectorAll('.image-track img');
+    const imgNext = document.querySelector('.img-next');
+    const imgPrev = document.querySelector('.img-prev');
+
+    function showImage(index) {
+        imageTrack.style.transform = `translateX(-${index * 100}%)`;
+        imgIndex = index;
+    }
+
+    function startImageInterval() {
+        stopImageInterval();
+        imageInterval = setInterval(() => {
+            const nextIndex = (imgIndex + 1) % images.length;
+            showImage(nextIndex);
+        }, 5000);
+    }
+
+    function stopImageInterval() {
+        if (imageInterval) clearInterval(imageInterval);
+    }
+
+    function nextImage() {
+        stopImageInterval();
+        showImage((imgIndex + 1) % images.length);
+        startImageInterval();
+    }
+
+    function prevImage() {
+        stopImageInterval();
+        showImage((imgIndex - 1 + images.length) % images.length);
+        startImageInterval();
+    }
+
+    // Set up event listeners
+    imgNext.addEventListener('click', nextImage);
+    imgPrev.addEventListener('click', prevImage);
+
+    // Touch events for mobile
+    imageTrack.addEventListener('touchstart', handleTouchStart);
+    imageTrack.addEventListener('touchmove', handleTouchMove);
+    imageTrack.addEventListener('touchend', handleTouchEnd);
+
+    // Image click to open modal
+    images.forEach((img, index) => {
+        img.addEventListener('click', () => {
+            stopImageInterval();
+            imgIndex = index;
+            openModal('image', img.src);
+        });
+    });
+
+    // Start the carousel
+    showImage(0);
+    startImageInterval();
+}
+
+// VIDEO CAROUSEL
+function initVideoCarousel() {
+    const videoTrack = document.querySelector('.video-track');
+    const videos = document.querySelectorAll('.video-track video');
+    const vidNext = document.querySelector('.vid-next');
+    const vidPrev = document.querySelector('.vid-prev');
+
+    function showVideo(index) {
+        videos[vidIndex].pause();
+        videoTrack.style.transform = `translateX(-${index * 100}%)`;
+        vidIndex = index;
+    }
+
+    function startVideoInterval() {
+        stopVideoInterval();
+        videoInterval = setInterval(() => {
+            const nextIndex = (vidIndex + 1) % videos.length;
+            showVideo(nextIndex);
+        }, 5000);
+    }
+
+    function stopVideoInterval() {
+        if (videoInterval) clearInterval(videoInterval);
+    }
+
+    function nextVideo() {
+        stopVideoInterval();
+        showVideo((vidIndex + 1) % videos.length);
+        startVideoInterval();
+    }
+
+    function prevVideo() {
+        stopVideoInterval();
+        showVideo((vidIndex - 1 + videos.length) % videos.length);
+        startVideoInterval();
+    }
+
+    // Set up event listeners
+    vidNext.addEventListener('click', nextVideo);
+    vidPrev.addEventListener('click', prevVideo);
+
+    // Touch events for mobile
+    videoTrack.addEventListener('touchstart', handleTouchStart);
+    videoTrack.addEventListener('touchmove', handleTouchMove);
+    videoTrack.addEventListener('touchend', handleTouchEnd);
+
+    // Video event handlers
+    videos.forEach((video, index) => {
+        // Double tap/click detection
+        video.addEventListener('click', handleVideoClick);
+        video.addEventListener('touchend', handleVideoTap);
+        
+        // Standard video controls behavior
+        video.addEventListener('play', () => {
+            stopVideoInterval();
+        });
+        
+        video.addEventListener('ended', () => {
+            startVideoInterval();
+        });
+        
+        video.addEventListener('pause', () => {
+            startVideoInterval();
+        });
+    });
+
+    // Start the carousel
+    showVideo(0);
+    startVideoInterval();
+}
+
+// VIDEO CLICK/TAP HANDLERS
+function handleVideoClick(e) {
+    const now = Date.now();
+    const video = e.currentTarget;
+    
+    if (lastTap && (now - lastTap) < 300) {
+        // Double click detected - open in modal
+        clearTimeout(tapTimeout);
+        lastTap = 0;
+        stopVideoInterval();
+        vidIndex = Array.from(document.querySelectorAll('.video-track video')).indexOf(video);
+        openModal('video', video.querySelector('source').src);
+    } else {
+        // Single click - let default video controls handle it
+        lastTap = now;
+        tapTimeout = setTimeout(() => {
+            lastTap = 0;
+        }, 300);
+    }
+}
+
+function handleVideoTap(e) {
+    const now = Date.now();
+    const video = e.currentTarget;
+    
+    if (lastTap && (now - lastTap) < 300) {
+        // Double tap detected - open in modal
+        clearTimeout(tapTimeout);
+        lastTap = 0;
+        e.preventDefault();
+        stopVideoInterval();
+        vidIndex = Array.from(document.querySelectorAll('.video-track video')).indexOf(video);
+        openModal('video', video.querySelector('source').src);
+    } else {
+        // Single tap - let default video controls handle it
+        lastTap = now;
+        tapTimeout = setTimeout(() => {
+            lastTap = 0;
+        }, 300);
+    }
+}
+
+// TOUCH HANDLERS
+function handleTouchStart(e) {
+    touchStartX = e.touches[0].clientX;
+    isDragging = true;
+    stopImageInterval();
+    stopVideoInterval();
+}
+
+function handleTouchMove(e) {
+    if (!isDragging) return;
+    const touchX = e.touches[0].clientX;
+    const diff = touchStartX - touchX;
+    
+    // Prevent scrolling when dragging
+    if (Math.abs(diff) > 10) {
+        e.preventDefault();
+    }
+}
+
+function handleTouchEnd(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > 50) { // Minimum swipe distance
+        if (diff > 0) {
+            // Swipe left - next
+            if (e.currentTarget.classList.contains('image-track')) {
+                document.querySelector('.img-next').click();
+            } else {
+                document.querySelector('.vid-next').click();
+            }
+        } else {
+            // Swipe right - prev
+            if (e.currentTarget.classList.contains('image-track')) {
+                document.querySelector('.img-prev').click();
+            } else {
+                document.querySelector('.vid-prev').click();
+            }
+        }
+    }
+    
+    startImageInterval();
+    startVideoInterval();
+}
+
+// MODAL FUNCTIONS
+function openModal(type, src) {
+    const modalContent = document.getElementById('modalContent');
+    
+    if (type === 'image') {
+        modalContent.innerHTML = `
+            <div class="modal-media-container">
+                <div class="modal-track" ontouchstart="modalTouchStart(event)" 
+                     ontouchmove="modalTouchMove(event)" ontouchend="modalTouchEnd(event)">
+                    <img src="${src}" class="modal-media">
+                </div>
+                <div class="modal-nav-buttons">
+                    <button class="modal-nav-btn" onclick="navigateModal('prev')">
+                        <span class="material-icons">chevron_left</span>
+                    </button>
+                    <button class="modal-nav-btn" onclick="navigateModal('next')">
+                        <span class="material-icons">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+        `;
+    } else {
+        modalContent.innerHTML = `
+            <div class="modal-media-container">
+                <div class="modal-track" ontouchstart="modalTouchStart(event)" 
+                     ontouchmove="modalTouchMove(event)" ontouchend="modalTouchEnd(event)">
+                    <video controls autoplay class="modal-media">
+                        <source src="${src}" type="video/mp4">
+                    </video>
+                </div>
+                <div class="modal-nav-buttons">
+                    <button class="modal-nav-btn" onclick="navigateModal('prev')">
+                        <span class="material-icons">chevron_left</span>
+                    </button>
+                    <button class="modal-nav-btn" onclick="navigateModal('next')">
+                        <span class="material-icons">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        // Handle video events in modal
+        const modalVideo = document.querySelector('#modalContent video');
+        if (modalVideo) {
+            modalVideo.addEventListener('play', () => {
+                stopVideoInterval();
+            });
+            modalVideo.addEventListener('ended', () => {
+                startVideoInterval();
+            });
+            modalVideo.addEventListener('pause', () => {
+                startVideoInterval();
+            });
+        }
+    }
+    
+    document.getElementById('mediaModal').style.display = 'flex';
+}
+
+// MODAL TOUCH HANDLERS
+let modalTouchStartX = 0;
+let isModalDragging = false;
+
+function modalTouchStart(e) {
+    modalTouchStartX = e.touches[0].clientX;
+    isModalDragging = true;
+    e.preventDefault();
+}
+
+function modalTouchMove(e) {
+    if (!isModalDragging) return;
+    e.preventDefault();
+}
+
+function modalTouchEnd(e) {
+    if (!isModalDragging) return;
+    isModalDragging = false;
+    
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = modalTouchStartX - touchEndX;
+    
+    if (Math.abs(diff) > 50) { // Minimum swipe distance
+        if (diff > 0) {
+            navigateModal('next');
+        } else {
+            navigateModal('prev');
+        }
+    }
+}
+
+// MODAL NAVIGATION
+function navigateModal(direction) {
+    const modal = document.getElementById('mediaModal');
+    if (modal.style.display !== 'flex') return;
+    
+    const mediaType = document.querySelector('.modal-media').tagName.toLowerCase();
+    
+    if (mediaType === 'img') {
+        const images = document.querySelectorAll('.image-track img');
+        if (direction === 'prev') {
+            imgIndex = (imgIndex - 1 + images.length) % images.length;
+            document.querySelector('.modal-media').src = images[imgIndex].src;
+        } else {
+            imgIndex = (imgIndex + 1) % images.length;
+            document.querySelector('.modal-media').src = images[imgIndex].src;
+        }
+    } else {
+        const videos = document.querySelectorAll('.video-track video');
+        const currentVideo = document.querySelector('.modal-media');
+        
+        if (direction === 'prev') {
+            vidIndex = (vidIndex - 1 + videos.length) % videos.length;
+        } else {
+            vidIndex = (vidIndex + 1) % videos.length;
+        }
+        
+        currentVideo.pause();
+        currentVideo.querySelector('source').src = videos[vidIndex].querySelector('source').src;
+        currentVideo.load();
+        currentVideo.play();
+    }
+}
+
+function closeModal() {
+    document.getElementById('mediaModal').style.display = 'none';
+    document.getElementById('modalContent').innerHTML = '';
+    initImageCarousel();
+    initVideoCarousel();
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initCarousels();
+    
+    // Close modal handlers
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+    document.getElementById('mediaModal').addEventListener('click', (e) => {
+        if (e.target.id === 'mediaModal') closeModal();
+    });
+});
+
+
+
+  </script>
+</body>
+</html>
